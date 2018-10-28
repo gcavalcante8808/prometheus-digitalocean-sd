@@ -7,5 +7,6 @@ RUN apk add --no-cache gzip tar curl ca-certificates && \
 
 FROM scratch
 COPY --from=downloader /tmp/prometheus-digitalocean-sd /
+COPY --from=downloader /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 USER 65534
 ENTRYPOINT ["/prometheus-digitalocean-sd"]
